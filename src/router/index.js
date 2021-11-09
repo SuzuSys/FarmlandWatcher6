@@ -21,11 +21,11 @@ onAuthUIStateChange((nextAuthState, authData) => {
   if (nextAuthState === AuthState.SignedIn) {
     // user successfully signed in!
     store.commit('setUser', authData);
-    router.push({ path: '/' });
+    router.push({ path: '/' }).catch(() => {});
   }
   if (!authData) {
     // user is not signed in...
-    router.push({ path: '/signin' });
+    router.push({ path: '/signin' }).catch(() => {});
     store.commit('setUser', null);
   }
 });
